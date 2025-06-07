@@ -1,0 +1,58 @@
+Sushant Dhakal
+450 Lee Blvd, Mississippi State, MS | sushantdhakal07@gmail.com | sd1884@msstate.edu | 662 352 6441
+linkedin.com/in/sushantdhakal41 | github.com/sushant-XD
+Profile
+Computer Engineering Student interested in Controls Systems Engineering, Automation, Hardware/Software
+Development, and Embedded Systems/Firmware development
+Education
+Mississippi State University , Bachelors Computer Engineering August 2024 - August 2027
+• GPA: 4.0/4.0
+Experience
+Research Assistant, Wireless Communication Lab - Mississippi State University January 2024 - Present
+• Collaboration with NTIA to mitigate attacks on 5G wireless Technologies
+• Implemented System design concepts to develop robust systems for detecting different types of attacks
+• Implemented multi-threaded C++ systems to capture IQ signals, decode, and test different attacks
+• Tech Stack: C++, C, Python, Linux
+Research Assistant, Agriculture Autonomy Institute - Mississippi State University September 2024 - Present
+• Spearheaded the development of modular safety mechanism for farmers based on Power Take Off (PTO) driven
+farming equipments
+• Used Solidworks for Design, Fusion 360 (eagle) for electronics design, 3D printing and CNC for product
+fabrication, ESP32 for controls
+• Conducted Interdisciplinary Research to detect accident and quickly stop heavy machinery based on
+pressure-based gloves
+Satellite Research Fellow , Space Foundation Nepal - Kathmandu, Nepal June 2023 – July 2024
+• Developed and worked on three Satellite Projects from Nepal: Munal, PHI-1, and Slippers2Sat
+• Implemented RTOS system for Satellites decreasing overhead software development time by 40
+• Conducted two practical labs at Central Engineering Campus of Tribhuvan University, to 4th year students about
+On-Board Computer Development for Satellites, Launch Vehicles and UAVs.
+• Technologies: PCB designing (2/4 layer), Low Level Programming, IoT, embedded systems, STM32, C/C++,
+STM32, Driver Development
+Satellite Research Intern , Space Foundation Nepal - Kathmandu August 2021 – May 2023
+• Designed and programmed On-Board Computer for Munal CubeSat (Second ever Nepali Satellite): used
+STM32F4 MCU and UART, SPI, I2C, Digital I/O for controls and communication
+• Designed and developed Electrical Ground Support Equipment (EGSE) for Munal: PCB designing, soldering and
+testing
+• Worked on Communication System for Munal: Antenna tuning, LoRa implementation, Communication Testing
+• Implemented micro-python on STM32 and integrated Tensorflow Lite in the firmware
+• Tech: ROS2, STM32, C++, C, Gazebo etc.
+Skills
+Programming Languages: C++, C, Javascript, Embedded C, Bash, Python, Ladder logic
+Microcontrollers: STM32, ESP32, Arduino, Raspberry PI
+Design: PCB designing(2 layer, 4 layer), 3D printing, CAD, CNC, soldering
+Software: FreeRTOS, PX4, POSIX, Linux, Autodesk Fusion 360, Solidworks Git and Github, Docker, CMake, ROS
+Other: Firmware and bootloader development, OS, Middlewares, Inter-Process Communication (IPC),
+Over-The-Air updates (OTA), Embedded File Systems(FatFS, LittleFS, SmartFS, etc.)
+Publications
+CubeOS: A PX4 Autopilot-inspired flight software for Nepal’s next-generation
+CubeSat bus
+October 2024
+Janardhan Silwal, Sushant Dhakal, Sangam Thapa, Eliza Sapkota, Trishna Shrestha, Dr. Abhas Maskey
+CubeOS: A PX4 Autopilot-inspired flight software for Nepal’s next-generation CubeSat bus
+Enhancing 5G Security via Error-Pattern Steganography: Practical Evaluation
+on COTS UEs
+Under Review
+Minglong Zhang, Prateek Shantharama, Mohammadi Hossein, Sushant Dhakal, Vuk Marojevic, Bryan A. Jones,
+Yongkyu Jang, David J. Love, Taejoon Kim
+Nepal’s 1U Munal CubeSat developed by High School Students October 2023
+Sushant Dhakal, Dr. Abhas Maskey, Sangita Mainali, Shreya Tamang, Kancha Ram Syangtan, Sambridhi Sharma
+Nepal’s 1U Munal CubeSat developed by High School Students
