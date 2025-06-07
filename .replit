@@ -27,3 +27,15 @@ externalPort = 80
 
 [objectStorage]
 defaultBucketID = "replit-objstore-7d95f1f3-5999-4c1a-bb2c-1967dea97e44"
+
+[workflows]
+runButton = "Development Server"
+
+[[workflows.workflow]]
+name = "Development Server"
+author = 43574329
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
