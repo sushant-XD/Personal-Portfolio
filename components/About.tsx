@@ -13,25 +13,26 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              I'm a passionate full-stack developer with expertise in modern web technologies. 
-              I love creating efficient, scalable, and user-friendly applications that solve real-world problems.
+              I'm a Computer Engineering student at Mississippi State University with a perfect 4.0 GPA, 
+              passionate about Controls Systems Engineering, Automation, Hardware/Software Development, 
+              and Embedded Systems/Firmware development.
             </p>
             
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              My journey in web development started with curiosity and has evolved into a deep passion 
-              for crafting digital experiences that make a difference. I'm always eager to learn new 
-              technologies and take on challenging projects.
+              My journey spans from developing Nepal's CubeSats to researching 5G security vulnerabilities 
+              and creating autonomous safety systems for farming equipment. I thrive on interdisciplinary 
+              research that bridges the gap between hardware and software.
             </p>
             
             <div className="flex flex-wrap gap-4">
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-lg">
-                Problem Solver
+                Research Focused
               </span>
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-lg">
-                Team Player
+                Embedded Systems
               </span>
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-lg">
-                Continuous Learner
+                Innovation Leader
               </span>
             </div>
           </div>
@@ -43,19 +44,23 @@ const About = () => {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-slate-600 dark:text-slate-300">Location</span>
-                <span className="font-medium text-slate-900 dark:text-white">Your City, Country</span>
+                <span className="font-medium text-slate-900 dark:text-white">Mississippi State, MS</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-600 dark:text-slate-300">Experience</span>
-                <span className="font-medium text-slate-900 dark:text-white">X+ Years</span>
+                <span className="text-slate-600 dark:text-slate-300">Education</span>
+                <span className="font-medium text-slate-900 dark:text-white">Computer Engineering</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-600 dark:text-slate-300">GPA</span>
+                <span className="font-medium text-slate-900 dark:text-white">4.0/4.0</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-600 dark:text-slate-300">Focus</span>
-                <span className="font-medium text-slate-900 dark:text-white">Full-Stack Development</span>
+                <span className="font-medium text-slate-900 dark:text-white">Embedded Systems</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-600 dark:text-slate-300">Availability</span>
-                <span className="font-medium text-green-600">Open to Work</span>
+                <span className="text-slate-600 dark:text-slate-300">Status</span>
+                <span className="font-medium text-green-600">Available for Research</span>
               </div>
             </div>
           </div>

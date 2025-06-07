@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const Hero = () => {
   const [text, setText] = useState("");
-  const roles = ["Full Stack Developer", "React Specialist", "UI/UX Enthusiast", "Problem Solver"];
+  const roles = ["Computer Engineering Student", "Embedded Systems Developer", "Research Assistant", "Satellite Systems Engineer"];
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -53,7 +53,7 @@ const Hero = () => {
             </p>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                John Doe
+                Sushant Dhakal
               </span>
             </h1>
           </div>
@@ -70,8 +70,9 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Passionate about creating exceptional digital experiences through clean code, 
-            innovative design, and cutting-edge technologies. Let's build something amazing together!
+            Computer Engineering student passionate about Controls Systems, Automation, Hardware/Software 
+            Development, and Embedded Systems. Experienced in satellite development, 5G security research, 
+            and autonomous systems.
           </p>
 
           {/* CTA Buttons */}
@@ -109,7 +110,9 @@ const Hero = () => {
             </a>
             
             <a
-              href="#"
+              href="https://linkedin.com/in/sushantdhakal41"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110 transform"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -118,7 +121,9 @@ const Hero = () => {
             </a>
             
             <a
-              href="#"
+              href="https://github.com/sushant-XD"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110 transform"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

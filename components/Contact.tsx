@@ -34,8 +34,8 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and interesting projects. 
-            Let's connect and create something amazing together!
+            I'm always open to discussing research opportunities, collaboration on embedded systems projects, 
+            and innovative ideas in automation and satellite technology.
           </p>
         </div>
         
@@ -49,7 +49,20 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Email</h3>
-                <p className="text-slate-600 dark:text-slate-300">your.email@example.com</p>
+                <p className="text-slate-600 dark:text-slate-300">sushantdhakal07@gmail.com</p>
+                <p className="text-slate-600 dark:text-slate-300">sd1884@msstate.edu</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-4">
+              <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Phone</h3>
+                <p className="text-slate-600 dark:text-slate-300">(662) 352-6441</p>
               </div>
             </div>
             
@@ -62,19 +75,19 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Location</h3>
-                <p className="text-slate-600 dark:text-slate-300">Your City, Country</p>
+                <p className="text-slate-600 dark:text-slate-300">450 Lee Blvd, Mississippi State, MS</p>
               </div>
             </div>
             
             <div className="flex items-start space-x-4">
               <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
                 <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Work</h3>
-                <p className="text-slate-600 dark:text-slate-300">Available for freelance</p>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Research Interests</h3>
+                <p className="text-slate-600 dark:text-slate-300">Embedded Systems, 5G Security, Satellite Technology</p>
               </div>
             </div>
           </div>
@@ -125,7 +138,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me about your research or collaboration ideas..."
                 />
               </div>
               
