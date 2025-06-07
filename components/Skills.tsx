@@ -85,21 +85,10 @@ const Skills = () => {
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-slate-700 dark:text-slate-300 font-medium">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-slate-500 dark:text-slate-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                  <div key={skillIndex} className="bg-slate-50 dark:bg-slate-700 rounded-lg p-3 text-center hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>

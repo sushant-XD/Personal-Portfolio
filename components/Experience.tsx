@@ -44,58 +44,84 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="space-y-12 lg:space-y-20">
-          {experiences.map((exp, index) => (
-            <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-16`}>
-              
-              {/* Timeline indicator - visible on larger screens */}
-              <div className="hidden lg:flex flex-col items-center">
-                <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 shadow-lg"></div>
-                {index !== experiences.length - 1 && (
-                  <div className="w-0.5 h-16 bg-blue-200 dark:bg-blue-800 mt-4"></div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 w-full lg:max-w-md xl:max-w-lg">
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                    <div className="mb-2 sm:mb-0">
-                      <h3 className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
+        {/* Desktop Timeline */}
+        <div className="hidden lg:block relative">
+          {/* Vertical line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800 transform -translate-x-1/2"></div>
+          
+          <div className="space-y-16">
+            {experiences.map((exp, index) => (
+              <div key={index} className="relative flex items-center">
+                {/* Timeline dot */}
+                <div className="absolute left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 shadow-lg transform -translate-x-1/2 z-10"></div>
+                
+                {/* Content - alternating sides */}
+                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'ml-auto pl-8'}`}>
+                  <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div className="flex flex-col mb-4">
+                      <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
+                        {exp.year}
+                      </span>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
                         {exp.title}
                       </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm lg:text-base">
+                      <p className="text-blue-600 dark:text-blue-400 font-semibold">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="text-xs lg:text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start sm:self-center">
-                      {exp.year}
-                    </span>
-                  </div>
-                  
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm lg:text-base">
-                    {exp.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    
+                    <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                      {exp.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Mobile timeline indicator */}
-              <div className="lg:hidden flex items-center justify-center">
-                <div className="w-3 h-3 bg-blue-600 rounded-full border-2 border-white dark:border-slate-900 shadow-lg"></div>
-                {index !== experiences.length - 1 && (
-                  <div className="w-16 h-0.5 bg-blue-200 dark:bg-blue-800 ml-2"></div>
-                )}
+        {/* Mobile Timeline */}
+        <div className="lg:hidden space-y-8">
+          {experiences.map((exp, index) => (
+            <div key={index} className="relative">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="flex flex-col mb-4">
+                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
+                    {exp.year}
+                  </span>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
+                    {exp.title}
+                  </h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                    {exp.company}
+                  </p>
+                </div>
+                
+                <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                  {exp.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
