@@ -5,24 +5,60 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: ["C++", "C", "JavaScript", "Embedded C", "Bash", "Python", "Ladder Logic"]
+      skills: [
+        { name: "C++", level: 90 },
+        { name: "C", level: 88 },
+        { name: "Python", level: 85 },
+        { name: "JavaScript", level: 80 },
+        { name: "Embedded C", level: 92 },
+        { name: "Bash", level: 75 },
+        { name: "Ladder Logic", level: 70 }
+      ]
     },
     {
       title: "Microcontrollers & Hardware",
-      skills: ["STM32", "ESP32", "Arduino", "Raspberry Pi", "PCB Design", "3D Printing", "CNC", "Soldering"]
+      skills: [
+        { name: "STM32", level: 95 },
+        { name: "ESP32", level: 90 },
+        { name: "Arduino", level: 85 },
+        { name: "Raspberry Pi", level: 80 },
+        { name: "PCB Design", level: 88 },
+        { name: "3D Printing", level: 82 },
+        { name: "CNC", level: 75 },
+        { name: "Soldering", level: 90 }
+      ]
     },
     {
       title: "Software & Frameworks",
-      skills: ["FreeRTOS", "PX4", "POSIX", "Linux", "ROS2", "TensorFlow Lite", "Docker", "CMake"]
+      skills: [
+        { name: "FreeRTOS", level: 92 },
+        { name: "PX4", level: 85 },
+        { name: "Linux", level: 88 },
+        { name: "ROS2", level: 80 },
+        { name: "TensorFlow Lite", level: 75 },
+        { name: "Docker", level: 78 },
+        { name: "CMake", level: 82 }
+      ]
     },
     {
       title: "Design & Tools",
-      skills: ["Autodesk Fusion 360", "Solidworks", "Git & GitHub", "Eagle PCB", "Gazebo"]
-    },
-    {
-      title: "Specialized Systems",
-      skills: ["Firmware Development", "Bootloader Development", "OS & Middlewares", "IPC", "OTA Updates", "Embedded File Systems"]
+      skills: [
+        { name: "Fusion 360", level: 88 },
+        { name: "Solidworks", level: 85 },
+        { name: "Git & GitHub", level: 90 },
+        { name: "Eagle PCB", level: 85 },
+        { name: "Gazebo", level: 75 }
+      ]
     }
+  ];
+
+  const specializations = [
+    "Firmware Development",
+    "Bootloader Development", 
+    "OS & Middlewares",
+    "Inter-Process Communication",
+    "OTA Updates",
+    "Embedded File Systems"
   ];
 
   return (
@@ -38,24 +74,32 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {skillCategories.map((category, index) => (
             <div
               key={index}
               className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700"
             >
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 text-center">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 text-center">
                 {category.title}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    className="bg-slate-50 dark:bg-slate-700 rounded-lg p-3 text-center hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
-                  >
-                    <span className="text-slate-700 dark:text-slate-300 font-medium">
-                      {skill}
-                    </span>
+                  <div key={skillIndex} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-700 dark:text-slate-300 font-medium">
+                        {skill.name}
+                      </span>
+                      <span className="text-sm text-slate-500 dark:text-slate-400">
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -63,16 +107,40 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Additional achievements section */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800/50 rounded-2xl p-8">
+        {/* Specializations */}
+        <div className="bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800/50 rounded-2xl p-8 mb-16">
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
+            Specialized Systems
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {specializations.map((spec, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-slate-800 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow"
+              >
+                <span className="text-slate-700 dark:text-slate-300 font-medium">
+                  {spec}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Research & Publications section */}
+        <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800/50 dark:to-blue-900/20 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
             Research & Publications
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md">
-              <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                CubeOS: PX4 Autopilot-inspired Flight Software
-              </h4>
+            <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+              <a
+                href="#"
+                className="block hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                  CubeOS: PX4 Autopilot-inspired Flight Software
+                </h4>
+              </a>
               <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                 Flight software for Nepal's next-generation CubeSat bus
               </p>
@@ -80,10 +148,15 @@ const Skills = () => {
                 Published October 2024
               </span>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md">
-              <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                Enhancing 5G Security via Error-Pattern Steganography
-              </h4>
+            <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+              <a
+                href="#"
+                className="block hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                  Enhancing 5G Security via Error-Pattern Steganography
+                </h4>
+              </a>
               <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                 Practical evaluation on COTS UEs
               </p>

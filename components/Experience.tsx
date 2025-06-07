@@ -33,7 +33,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Experience
@@ -44,33 +44,36 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800"></div>
-          
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative flex items-start">
-                {/* Timeline dot */}
-                <div className="absolute left-6 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 shadow-lg"></div>
-                
-                {/* Content */}
-                <div className="ml-20 bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700 w-full">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+        <div className="space-y-12 lg:space-y-20">
+          {experiences.map((exp, index) => (
+            <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-16`}>
+              
+              {/* Timeline indicator - visible on larger screens */}
+              <div className="hidden lg:flex flex-col items-center">
+                <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 shadow-lg"></div>
+                {index !== experiences.length - 1 && (
+                  <div className="w-0.5 h-16 bg-blue-200 dark:bg-blue-800 mt-4"></div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 w-full lg:max-w-md xl:max-w-lg">
+                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                    <div className="mb-2 sm:mb-0">
+                      <h3 className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
                         {exp.title}
                       </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                      <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm lg:text-base">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full mt-2 lg:mt-0 inline-block">
+                    <span className="text-xs lg:text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start sm:self-center">
                       {exp.year}
                     </span>
                   </div>
                   
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm lg:text-base">
                     {exp.description}
                   </p>
                   
@@ -86,8 +89,16 @@ const Experience = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Mobile timeline indicator */}
+              <div className="lg:hidden flex items-center justify-center">
+                <div className="w-3 h-3 bg-blue-600 rounded-full border-2 border-white dark:border-slate-900 shadow-lg"></div>
+                {index !== experiences.length - 1 && (
+                  <div className="w-16 h-0.5 bg-blue-200 dark:bg-blue-800 ml-2"></div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
