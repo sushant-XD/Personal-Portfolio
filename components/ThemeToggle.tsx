@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Check for saved theme preference or default to system preference
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -19,6 +21,10 @@ const ThemeToggle = () => {
       document.documentElement.classList.remove('dark');
     }
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const toggleTheme = () => {
     const newTheme = !isDark;
