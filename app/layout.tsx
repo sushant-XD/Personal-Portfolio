@@ -1,8 +1,10 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "My Photo Gallery",
+  title: "Portfolio | Your Name",
+  description: "Full-stack developer passionate about creating amazing web experiences",
 };
 
 export default function RootLayout({
@@ -11,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-neutral-50 text-neutral-950">{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,9 +1,48 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .animate-appear {
+    animation: appear 300ms ease-out forwards;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-400 dark:bg-blue-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-500 dark:bg-blue-500;
 }
