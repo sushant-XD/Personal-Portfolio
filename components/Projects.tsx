@@ -1,4 +1,3 @@
-
 "use client";
 
 const Projects = () => {
@@ -91,16 +90,16 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
                     <span
@@ -111,7 +110,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex space-x-4">
                   <a
                     href={project.liveLink}
@@ -131,61 +130,6 @@ const Projects = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Other Projects */}
-        <div className="border-t border-slate-200 dark:border-slate-700 pt-16">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
-            Additional Projects
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {otherProjects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700"
-              >
-                <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
-                  {project.title}
-                </h4>
-                
-                <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span className="text-xs font-medium text-slate-500 dark:text-slate-400 px-2 py-1">
-                      +{project.technologies.length - 4} more
-                    </span>
-                  )}
-                </div>
-                
-                <div className="flex space-x-3">
-                  <a
-                    href={project.liveLink}
-                    className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
-                  >
-                    Learn More →
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

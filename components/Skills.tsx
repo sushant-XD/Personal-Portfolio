@@ -96,24 +96,7 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Specializations */}
-        <div className="bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-800/50 rounded-2xl p-8 mb-16">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
-            Specialized Systems
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {specializations.map((spec, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow"
-              >
-                <span className="text-slate-700 dark:text-slate-300 font-medium">
-                  {spec}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Research & Publications section */}
         <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800/50 dark:to-blue-900/20 rounded-2xl p-8">

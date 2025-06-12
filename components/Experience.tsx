@@ -74,7 +74,7 @@ const Experience = () => {
                       {exp.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
@@ -84,6 +84,10 @@ const Experience = () => {
                         </span>
                       ))}
                     </div>
+                    
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm">
+                      Learn More
+                    </button>
                   </div>
                 </div>
               </div>
@@ -112,7 +116,7 @@ const Experience = () => {
                   {exp.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {exp.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
@@ -122,6 +126,10 @@ const Experience = () => {
                     </span>
                   ))}
                 </div>
+                
+                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm">
+                  Learn More
+                </button>
               </div>
             </div>
           ))}
