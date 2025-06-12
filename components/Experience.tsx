@@ -1,5 +1,19 @@
 
-const Experience = () => {
+"use client";
+
+import { useState } from 'react';
+
+const RoadmapSection = () => {
+  const [activeSection, setActiveSection] = useState('experience');
+
+  const sections = [
+    { id: 'experience', name: 'Experience', icon: '💼' },
+    { id: 'education', name: 'Education', icon: '🎓' },
+    { id: 'projects', name: 'Projects', icon: '🚀' },
+    { id: 'skills', name: 'Skills', icon: '⚡' },
+    { id: 'research', name: 'Research & Publications', icon: '📚' }
+  ];
+
   const experiences = [
     {
       year: "January 2024 - Present",
@@ -31,82 +45,111 @@ const Experience = () => {
     }
   ];
 
-  return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Experience
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            My journey through research and development in embedded systems, satellite technology, and automation.
-          </p>
-        </div>
+  const education = [
+    {
+      year: "August 2024 - August 2027",
+      title: "Bachelor's in Computer Engineering",
+      company: "Mississippi State University",
+      description: "Currently pursuing Computer Engineering with focus on Controls Systems Engineering, Automation, Hardware/Software Development, and Embedded Systems/Firmware development.",
+      technologies: ["GPA: 4.0/4.0"],
+      gpa: "4.0/4.0"
+    }
+  ];
 
-        {/* Desktop Timeline */}
-        <div className="hidden lg:block relative">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800 transform -translate-x-1/2"></div>
-          
-          <div className="space-y-16">
+  const projects = [
+    {
+      year: "2024",
+      title: "5G Security Enhancement System",
+      company: "Research Project",
+      description: "Developed robust systems for detecting and mitigating various types of attacks on 5G wireless technologies using multi-threaded C++ architecture.",
+      technologies: ["C++", "Signal Processing", "5G", "Security"]
+    },
+    {
+      year: "2024",
+      title: "Agricultural Safety Mechanism",
+      company: "AAI Research",
+      description: "Created modular safety system for PTO-driven farming equipment with pressure-based detection gloves and automatic machinery shutdown capabilities.",
+      technologies: ["ESP32", "Solidworks", "Fusion 360", "3D Printing"]
+    },
+    {
+      year: "2023-2024",
+      title: "Satellite Projects (Munal, PHI-1, Slippers2Sat)",
+      company: "Space Foundation Nepal",
+      description: "Developed on-board computers and RTOS systems for three different satellite projects, including Nepal's second CubeSat mission.",
+      technologies: ["STM32", "RTOS", "PCB Design", "Embedded Systems"]
+    }
+  ];
+
+  const skills = [
+    {
+      category: "Programming Languages",
+      items: ["C/C++", "Python", "JavaScript", "TypeScript", "VHDL", "Assembly"]
+    },
+    {
+      category: "Embedded Systems",
+      items: ["STM32", "ESP32", "Arduino", "RTOS", "Firmware Development", "Driver Development"]
+    },
+    {
+      category: "Hardware Design",
+      items: ["PCB Design", "Solidworks", "Fusion 360", "Eagle", "KiCad", "3D Printing", "CNC"]
+    },
+    {
+      category: "Communication Protocols",
+      items: ["UART", "SPI", "I2C", "LoRa", "5G", "Wireless Communication"]
+    },
+    {
+      category: "Software & Tools",
+      items: ["Linux", "ROS2", "TensorFlow Lite", "Git", "Docker", "MATLAB"]
+    },
+    {
+      category: "Specializations",
+      items: ["Controls Systems", "Automation", "5G Security", "Satellite Technology", "IoT"]
+    }
+  ];
+
+  const research = [
+    {
+      title: "Enhancing 5G Security via Error-Pattern Steganography",
+      description: "Practical evaluation on COTS UEs",
+      status: "Under Review",
+      year: "2024",
+      link: "#"
+    },
+    {
+      title: "Modular Safety Systems for Agricultural Equipment",
+      description: "Pressure-based detection and automatic shutdown mechanisms",
+      status: "In Progress",
+      year: "2024",
+      link: "#"
+    },
+    {
+      title: "RTOS Implementation for CubeSat Systems",
+      description: "Reducing software development overhead in satellite systems",
+      status: "Published",
+      year: "2023",
+      link: "#"
+    }
+  ];
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'experience':
+        return (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Experience</h3>
             {experiences.map((exp, index) => (
-              <div key={index} className="relative flex items-center">
-                {/* Timeline dot */}
-                <div className="absolute left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 shadow-lg transform -translate-x-1/2 z-10"></div>
-                
-                {/* Content - alternating sides */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'ml-auto pl-8'}`}>
-                  <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                    <div className="flex flex-col mb-4">
-                      <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
-                        {exp.year}
-                      </span>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-                        {exp.title}
-                      </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                        {exp.company}
-                      </p>
-                    </div>
-                    
-                    <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm">
-                      Learn More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Timeline */}
-        <div className="lg:hidden space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative">
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+              <div 
+                key={index} 
+                className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
+                onClick={() => console.log('Experience clicked:', exp.title)}
+              >
                 <div className="flex flex-col mb-4">
                   <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
                     {exp.year}
                   </span>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     {exp.title}
-                  </h3>
+                  </h4>
                   <p className="text-blue-600 dark:text-blue-400 font-semibold">
                     {exp.company}
                   </p>
@@ -116,7 +159,7 @@ const Experience = () => {
                   {exp.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2">
                   {exp.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
@@ -126,17 +169,210 @@ const Experience = () => {
                     </span>
                   ))}
                 </div>
-                
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm">
-                  Learn More
-                </button>
               </div>
+            ))}
+          </div>
+        );
+
+      case 'education':
+        return (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Education</h3>
+            {education.map((edu, index) => (
+              <div 
+                key={index} 
+                className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
+                onClick={() => console.log('Education clicked:', edu.title)}
+              >
+                <div className="flex flex-col mb-4">
+                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
+                    {edu.year}
+                  </span>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    {edu.title}
+                  </h4>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                    {edu.company}
+                  </p>
+                </div>
+                
+                <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                  {edu.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-sm font-bold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded">
+                    GPA: {edu.gpa}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+
+      case 'projects':
+        return (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Featured Projects</h3>
+            <div className="grid gap-6">
+              {projects.map((project, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
+                  onClick={() => console.log('Project clicked:', project.title)}
+                >
+                  <div className="flex flex-col mb-4">
+                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
+                      {project.year}
+                    </span>
+                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </h4>
+                    <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                      {project.company}
+                    </p>
+                  </div>
+                  
+                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+        );
+
+      case 'skills':
+        return (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Technical Skills</h3>
+            <div className="grid gap-6">
+              {skills.map((skillGroup, index) => (
+                <div key={index} className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                    {skillGroup.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {skillGroup.items.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'research':
+        return (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Research & Publications</h3>
+            <div className="grid gap-6">
+              {research.map((paper, index) => (
+                <div key={index} className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="flex justify-between items-start mb-3">
+                    <a 
+                      href={paper.link} 
+                      className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                      onClick={() => console.log('Research paper clicked:', paper.title)}
+                    >
+                      {paper.title}
+                    </a>
+                    <span className="text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">
+                      {paper.year}
+                    </span>
+                  </div>
+                  
+                  <p className="text-slate-600 dark:text-slate-300 mb-3 leading-relaxed">
+                    {paper.description}
+                  </p>
+                  
+                  <span className={`text-xs font-medium px-2 py-1 rounded ${
+                    paper.status === 'Published' 
+                      ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                      : paper.status === 'Under Review'
+                      ? 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200'
+                      : 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
+                  }`}>
+                    {paper.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section id="roadmap" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            My Journey
+          </h2>
+          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Explore my professional journey, education, projects, and research contributions.
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left Sidebar - Navigation */}
+          <div className="lg:w-1/4">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 sticky top-6">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Roadmap</h3>
+              <nav className="space-y-2">
+                {sections.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
+                      activeSection === section.id
+                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 shadow-sm'
+                        : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                    }`}
+                  >
+                    <span className="text-lg">{section.icon}</span>
+                    <span className="font-medium">{section.name}</span>
+                    {activeSection === section.id && (
+                      <div className="ml-auto w-2 h-2 bg-blue-600 rounded-full"></div>
+                    )}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Right Content Area */}
+          <div className="lg:w-3/4">
+            <div className="min-h-[600px]">
+              {renderContent()}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Experience;
+export default RoadmapSection;
