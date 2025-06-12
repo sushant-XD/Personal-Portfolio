@@ -1,17 +1,18 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const RoadmapSection = () => {
   const [activeSection, setActiveSection] = useState('experience');
+  const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
   const sections = [
-    { id: 'experience', name: 'Experience', icon: '💼' },
-    { id: 'education', name: 'Education', icon: '🎓' },
+    { id: 'experience', name: 'Work Experience', icon: '💼' },
+    { id: 'education', name: 'Education and Certification', icon: '🎓' },
     { id: 'projects', name: 'Projects', icon: '🚀' },
     { id: 'skills', name: 'Skills', icon: '⚡' },
-    { id: 'research', name: 'Research & Publications', icon: '📚' }
+    { id: 'research', name: 'Achievement and Publication', icon: '📚' }
   ];
 
   const experiences = [
@@ -35,13 +36,6 @@ const RoadmapSection = () => {
       company: "Space Foundation Nepal - Kathmandu, Nepal",
       description: "Developed and worked on three Satellite Projects from Nepal: Munal, PHI-1, and Slippers2Sat. Implemented RTOS system for satellites, decreasing overhead software development time by 40%. Conducted practical labs at Central Engineering Campus of Tribhuvan University for 4th year students.",
       technologies: ["STM32", "RTOS", "PCB Design", "C/C++", "IoT", "Driver Development"]
-    },
-    {
-      year: "August 2021 - May 2023",
-      title: "Satellite Research Intern",
-      company: "Space Foundation Nepal - Kathmandu",
-      description: "Designed and programmed On-Board Computer for Munal CubeSat (Second ever Nepali Satellite) using STM32F4 MCU. Designed and developed Electrical Ground Support Equipment (EGSE) for Munal. Implemented micro-python on STM32 and integrated Tensorflow Lite in firmware.",
-      technologies: ["STM32", "UART", "SPI", "I2C", "LoRa", "ROS2", "TensorFlow Lite"]
     }
   ];
 
@@ -49,7 +43,7 @@ const RoadmapSection = () => {
     {
       year: "August 2024 - August 2027",
       title: "Bachelor's in Computer Engineering",
-      company: "Mississippi State University",
+      company: "Mississippi State University, Mississippi State, MS",
       description: "Currently pursuing Computer Engineering with focus on Controls Systems Engineering, Automation, Hardware/Software Development, and Embedded Systems/Firmware development.",
       technologies: ["GPA: 4.0/4.0"],
       gpa: "4.0/4.0"
@@ -131,28 +125,66 @@ const RoadmapSection = () => {
     }
   ];
 
-  const renderContent = () => {
-    switch (activeSection) {
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      for (const section of sections) {
+        const element = sectionsRef.current[section.id];
+        if (element) {
+          const elementTop = element.offsetTop;
+          const elementBottom = elementTop + element.offsetHeight;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections]);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = sectionsRef.current[sectionId];
+    if (element) {
+      const elementTop = element.offsetTop - 100;
+      window.scrollTo({
+        top: elementTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const renderContent = (sectionId: string) => {
+    switch (sectionId) {
       case 'experience':
         return (
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Experience</h3>
+            <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-8">Work Experience</h3>
             {experiences.map((exp, index) => (
               <div 
                 key={index} 
                 className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
                 onClick={() => console.log('Experience clicked:', exp.title)}
               >
-                <div className="flex flex-col mb-4">
-                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
-                    {exp.year}
-                  </span>
-                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    {exp.title}
-                  </h4>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                    {exp.company}
-                  </p>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-white dark:text-slate-900 font-bold text-lg">MSU</span>
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2 block">
+                      {exp.year}
+                    </span>
+                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      {exp.title}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">
+                      {exp.company}
+                    </p>
+                  </div>
                 </div>
                 
                 <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
@@ -177,23 +209,28 @@ const RoadmapSection = () => {
       case 'education':
         return (
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Education</h3>
+            <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-8">Education and Certification</h3>
             {education.map((edu, index) => (
               <div 
                 key={index} 
                 className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
                 onClick={() => console.log('Education clicked:', edu.title)}
               >
-                <div className="flex flex-col mb-4">
-                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
-                    {edu.year}
-                  </span>
-                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    {edu.title}
-                  </h4>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                    {edu.company}
-                  </p>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-white dark:text-slate-900 font-bold text-lg">MSU</span>
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2 block">
+                      {edu.year}
+                    </span>
+                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      {edu.title}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">
+                      {edu.company}
+                    </p>
+                  </div>
                 </div>
                 
                 <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
@@ -213,7 +250,7 @@ const RoadmapSection = () => {
       case 'projects':
         return (
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Featured Projects</h3>
+            <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-8">Projects</h3>
             <div className="grid gap-6">
               {projects.map((project, index) => (
                 <div 
@@ -222,13 +259,13 @@ const RoadmapSection = () => {
                   onClick={() => console.log('Project clicked:', project.title)}
                 >
                   <div className="flex flex-col mb-4">
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full self-start mb-3">
+                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">
                       {project.year}
                     </span>
                     <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                       {project.title}
                     </h4>
-                    <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">
                       {project.company}
                     </p>
                   </div>
@@ -256,7 +293,7 @@ const RoadmapSection = () => {
       case 'skills':
         return (
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Technical Skills</h3>
+            <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-8">Skills</h3>
             <div className="grid gap-6">
               {skills.map((skillGroup, index) => (
                 <div key={index} className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
@@ -282,19 +319,19 @@ const RoadmapSection = () => {
       case 'research':
         return (
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Research & Publications</h3>
+            <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-8">Achievement and Publication</h3>
             <div className="grid gap-6">
               {research.map((paper, index) => (
                 <div key={index} className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="flex justify-between items-start mb-3">
                     <a 
                       href={paper.link} 
-                      className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                      className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer flex-1"
                       onClick={() => console.log('Research paper clicked:', paper.title)}
                     >
                       {paper.title}
                     </a>
-                    <span className="text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">
+                    <span className="text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded ml-4">
                       {paper.year}
                     </span>
                   </div>
@@ -326,47 +363,44 @@ const RoadmapSection = () => {
   return (
     <section id="roadmap" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            My Journey
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Explore my professional journey, education, projects, and research contributions.
-          </p>
-        </div>
-
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Sidebar - Navigation */}
+          {/* Left Sidebar - Fixed Navigation */}
           <div className="lg:w-1/4">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 sticky top-6">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Roadmap</h3>
-              <nav className="space-y-2">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
-                      activeSection === section.id
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
-                    }`}
-                  >
-                    <span className="text-lg">{section.icon}</span>
-                    <span className="font-medium">{section.name}</span>
-                    {activeSection === section.id && (
-                      <div className="ml-auto w-2 h-2 bg-blue-600 rounded-full"></div>
-                    )}
-                  </button>
-                ))}
-              </nav>
+            <div className="lg:sticky lg:top-6">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+                <nav className="space-y-2">
+                  {sections.map((section) => (
+                    <button
+                      key={section.id}
+                      onClick={() => scrollToSection(section.id)}
+                      className={`w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
+                        activeSection === section.id
+                          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-l-4 border-blue-600 font-semibold'
+                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                      }`}
+                    >
+                      <span className="font-medium">{section.name}</span>
+                    </button>
+                  ))}
+                </nav>
+              </div>
             </div>
           </div>
 
           {/* Right Content Area */}
           <div className="lg:w-3/4">
-            <div className="min-h-[600px]">
-              {renderContent()}
+            <div className="space-y-20">
+              {sections.map((section) => (
+                <div
+                  key={section.id}
+                  ref={(el) => {
+                    sectionsRef.current[section.id] = el;
+                  }}
+                  className="min-h-screen"
+                >
+                  {renderContent(section.id)}
+                </div>
+              ))}
             </div>
           </div>
         </div>
